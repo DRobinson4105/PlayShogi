@@ -40,3 +40,4 @@ Later Goals:
 - As a logged in user, I want to have lessons
 - As an in-game user, I want to be able to view a move log
 - As an in-game user, I want to be able to chat unfiltered
+- As a logged in user, I want to chat with friends
