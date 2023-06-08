@@ -1,9 +1,7 @@
-// src/routes/signup/+page.server.ts
 
-import { fail } from '@sveltejs/kit';
-import { User } from '../../lib/prisma';
-import { redirect } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
+import prisma from '../../lib/prisma';
 
 const validateEmail = (email: string) => {
     return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
@@ -14,30 +12,30 @@ export const actions = {
     default: async ({ request }) => {
         const data = await request.formData();
 
-        let name = data.get("name")
+        let userPassword = data.get("userPassword")
         let userEmail = data.get("userEmail")
 
         // 2.
-        if (!name || !userEmail) {
-            return fail(400, { name, userEmail, missing: true });
+        if (!userPassword || !userEmail) {
+            return fail(400, { userPassword, userEmail, missing: true });
         }
                 // 3.
-        if (typeof name != "string" || typeof userEmail != "string") {
+        if (typeof userPassword != "string" || typeof userEmail != "string") {
             return fail(400, { incorrect: true })
         }
                 // 4.
         if (!validateEmail(userEmail)) {
-            return fail(400, { name, incorrect: true });
+            return fail(400, { incorrect: true });
         }
 
         // 5.
         await prisma.user.create({
             data: {
-                name,
-                email: userEmail,
+                password: userPassword,
+                email: userEmail
             },
         });
 
-        throw redirect(303, `/drafts`)
+        throw redirect(303, `/signup`)
     }
 } satisfies Actions;

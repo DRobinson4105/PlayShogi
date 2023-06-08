@@ -1,6 +1,7 @@
-import HomePageAppBar from '../routes/components/HomePageAppBar.svelte';
-import MainAppBar from '../routes/components/MainAppBar.svelte';
+import HomePageAppBar from '../../src/lib/components/HomePageAppBar.svelte';
+import MainAppBar from '../../src/lib/components/MainAppBar.svelte';
 
+// @ts-ignore
 export function getAppBar(url) {
   console.log(url.pathname);
   if (url.pathname === '/') {

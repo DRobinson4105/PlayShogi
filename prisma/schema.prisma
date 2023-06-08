@@ -12,12 +12,10 @@ datasource db {
 
 model User {
   id     Int    @id @default(autoincrement())
-  userId Int    @default(autoincrement())
-  ip     String
 
   // Login Info
   email    String @unique
-  username String @unique
+  username String? @unique
   password String
 
   // Profile
@@ -26,12 +24,12 @@ model User {
   friendsRelation User[] @relation("friends")
 
   // Stats
-  rank   Int
-  wins   Int
-  losses Int
-  draws  Int
+  rank   Int @default(0)
+  wins   Int @default(0)
+  losses Int @default(0)
+  draws  Int @default(0)
 }
 
-// npx prisma migrate dev
 // docker compose up
+// npx prisma migrate dev
 // npx prisma studio dev

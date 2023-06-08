@@ -1,16 +1,14 @@
 -- CreateTable
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
-    "userId" SERIAL NOT NULL,
-    "ip" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "username" TEXT NOT NULL,
+    "username" TEXT,
     "password" TEXT NOT NULL,
     "avatarURL" TEXT NOT NULL DEFAULT 'https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-1.jpg',
-    "rank" INTEGER NOT NULL,
-    "wins" INTEGER NOT NULL,
-    "losses" INTEGER NOT NULL,
-    "draws" INTEGER NOT NULL,
+    "rank" INTEGER NOT NULL DEFAULT 0,
+    "wins" INTEGER NOT NULL DEFAULT 0,
+    "losses" INTEGER NOT NULL DEFAULT 0,
+    "draws" INTEGER NOT NULL DEFAULT 0,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
