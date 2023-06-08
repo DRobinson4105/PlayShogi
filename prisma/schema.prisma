@@ -13,23 +13,23 @@ datasource db {
 model User {
   id     Int    @id @default(autoincrement())
   userId Int    @default(autoincrement())
-  ip     String
+  //ip     String
 
   // Login Info
   email    String @unique
-  username String @unique
+  //username String @unique
   password String
 
   // Profile
-  avatarURL       String @default("https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-1.jpg")
-  friends         User[] @relation("friends")
-  friendsRelation User[] @relation("friends")
+  //avatarURL       String @default("https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-1.jpg")
+  //friends         User[] @relation("friends")
+  //friendsRelation User[] @relation("friends")
 
   // Stats
-  rank   Int
-  wins   Int
-  losses Int
-  draws  Int
+  //rank   Int
+  //wins   Int
+  //losses Int
+  //draws  Int
 }
 
 // npx prisma migrate dev
