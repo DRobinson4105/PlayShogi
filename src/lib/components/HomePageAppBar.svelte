@@ -2,9 +2,16 @@
 	import { AppBar } from '@skeletonlabs/skeleton';
 </script>
 
-<AppBar gridColumns="grid-cols-3" slotDefault="place-self-center" slotTrail="place-content-end">
+<AppBar
+	gridColumns="grid-cols-3"
+	slotDefault="place-self-center"
+	slotTrail="place-content-end"
+	background="bg-gradient-to-br variant-gradient-tertiary-secondary"
+>
 	<svelte:fragment slot="lead">
-		<img src="/src/assets/shogi-icon.svg" alt="PlayShogi Logo" />
+		<a href="/">
+			<img src="/src/assets/shogi-icon.svg" alt="PlayShogi Logo" />
+		</a>
 	</svelte:fragment>
 	<svelte:fragment slot="trail">
 		<div class="flex flex-row space-x-2">

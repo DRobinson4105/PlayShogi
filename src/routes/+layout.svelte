@@ -23,14 +23,14 @@
 	<svelte:fragment slot="footer">
 		<div class="card variant-filled-warning rounded-none p-6 text-center">
 			<div class="card-top-row mt-2">
-				<div class="flex flex-row space-x-4 justify-center">
-					<a href="/" class="mt-4">About</a>
-					<a href="/" class="mt-4">Blog</a>
-					<a href="/" class="mt-4">Terms</a>
+				<div class="flex flex-row space-x-4 justify-center ml-5">
+					<a href="/" class="mt-4">Shaco</a>
+					<a href="/" class="mt-4">Mains</a>
+					<a href="/" class="mt-4">are</a>
 					<img src="/src/assets/shogi-icon.svg" alt="PlayShogi Logo" />
-					<a href="/" class="mt-4">About</a>
-					<a href="/" class="mt-4">Blog</a>
-					<a href="/" class="mt-4">Terms</a>
+					<a href="/" class="mt-4">really</a>
+					<a href="/" class="mt-4">really</a>
+					<a href="/" class="mt-4">nasty</a>
 				</div>
 				<div class="divider border-black rounded-sm w-30 border my-4" />
 				<div class="flex flex-row space-x-2 justify-center icon-row mb-2">
