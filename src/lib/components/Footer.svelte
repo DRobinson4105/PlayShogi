@@ -23,11 +23,13 @@
 			>
 				<Icon src={BrandGithub} size="36px" />
 			</a>
-			<div
-				class="w-12 h-12 bg-purple-50 rounded-full border border-black text-center flex justify-center items-center"
+			<a
+				href="https://www.linkedin.com/in/davidrobinson05"
+				target="_blank"
+				class="w-12 h-12 bg-purple-50 rounded-full border border-black flex justify-center items-center"
 			>
 				<Icon src={BrandLinkedin} size="36px" />
-			</div>
+			</a>
 			<a
 				href="https://kit.svelte.dev/"
 				target="_blank"
