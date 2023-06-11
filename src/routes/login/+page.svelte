@@ -2,18 +2,18 @@
 	import type { ActionData } from './$types';
 	let experience = 'New';
 	export let form: ActionData;
+	import { page } from '$app/stores';
 </script>
 
 <div
 	class="card rounded-none w-full h-full bg-gradient-to-br variant-gradient-primary-secondary flex justify-center"
 >
 	<div
-		class="card p-4 hero-containers justify-center text-center w-1/3 h-5/6 mt-16 variant-filled-secondary"
+		class="card p-4 hero-containers justify-center text-center w-1/3 {form != null && form.error != null ? 'h-[70%]' : 'h-2/3'} my-auto variant-filled-secondary" id='box'
 	>
 		<form method="post">
 			<div class="Form-Heading mb-0.5">
-				<h1 class="m-2 text-4xl">Join the Poggin' Poros</h1>
-				<p class="mb-5">or don't idrk /shrug</p>
+				<h1 class="mt-2 mx-2 mb-10 text-4xl"> the Poggin' Poros</h1>
 			</div>
 			<div class="Email-and-Password">
 				<input
@@ -34,24 +34,13 @@
 					value={form?.userPassword ?? ''}
 				/>
 			</div>
-			<p class="text-xs my-2">How dogwater are you???</p>
-			<div class="experienceCards flex flex-row justify-center space-x-2">
-				{#each ['New', 'Beginner', 'Advance', 'Expert'] as c}
-					<span
-						class="card p-2 w-20 h-20 transition-[2s] {experience === c ? 'variant-filled' : 'variant-soft'}"
-						on:click={() => {
-							experience = c;
-						}}
-						on:keypress
-					>
-						<span class="text-4xl block">☖</span>
-						<span class="inline-block">{c}</span>
-					</span>
-				{/each}
-			</div>
+
+			{#if form?.error}
+			<p class="error text-base block mt-2.5 text-red-400">{form.error}</p>
+			{/if}
 
 			<div class="Confirm-Button">
-				<button type="submit" class="btn m-1 variant-filled-error my-4">Sign Up</button>
+				<button type="submit" class="btn m-1 variant-filled-error my-4">Log In</button>
 			</div>
 		</form>
 		<div class="divider flex flex-row justify-center mb-4">
@@ -60,7 +49,7 @@
 			<div class="divider border-black rounded-sm w-44 h-1 border my-6" />
 		</div>
 		<div class="logo-cloud gap-1">
-			<a class="logo-item h-10 !bg-[#FFF]" href="/">
+			<a class="logo-item h-10 !bg-[#FFF] !hover:black" href="/">
 				<img src="/src/assets/google-logo.svg" class="w-8" alt="Google Logo" />
 				<span
 					class="drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]
@@ -83,13 +72,7 @@
 			</a>
 		</div>
 		<span class="text-base block mt-2.5"
-			>Already have an account? <a class="text-blue-400 hover:text-blue-500" href="/login">Log In</a
-			></span
-		>
-		<span class="text-xs"
-			>I accept the site <a class="text-blue-400 hover:text-blue-500" href="/">Terms of Service</a>
-			and agree to the
-			<a class="text-blue-400 hover:text-blue-500" href="/">Privacy Policy</a>.</span
-		>
+			>Don't have an account? <a class="text-blue-400 hover:text-blue-500" href="/signup">Sign Up</a>
+		</span>
 	</div>
 </div>

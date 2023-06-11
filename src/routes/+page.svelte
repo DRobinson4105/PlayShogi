@@ -10,20 +10,20 @@
 				then, he was a farmer.<br /> Children's biggest fear and concern is pregnancy.
 			</p>
 			<div class="signup/loginButton flex flex-row justify-center space-x-4 mt-12">
-				<a href="/signup" class="btn variant-filled-primary heroButton w-3/12 border border-black"
+				<a href="/signup" class="btn variant-filled-primary heroButton w-[25%] border border-black"
 					>Signup</a
 				>
-				<a href="/login" class="btn variant-filled-primary heroButton w-3/12 border border-black"
+				<a href="/login" class="btn variant-filled-primary heroButton w-[25%] border border-black"
 					>Login</a
 				>
 			</div>
 			<div class="flex justify-center">
-				<a href="/" class="btn variant-filled-tertiary heroButton w-[30rem] border border-black mt-4"
+				<a href="/" class="btn variant-filled-tertiary heroButton w-[51.6%] border border-black mt-4"
 					>Play as a Guest</a
 				>
 			</div>
 		</div>
-		<div class="hero-image w-1/2 flex justify-center items-center">
+		<div class="hero-image w-[40rem] h-[40rem] flex justify-center items-center">
 			<img src="/src/assets/shogi-board.png" alt="Shogi Board" class="w-3/4 h-3/4" />
 		</div>
 	</div>
