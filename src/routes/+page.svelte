@@ -18,7 +18,7 @@
 				>
 			</div>
 			<div class="flex justify-center">
-				<a href="/" class="btn variant-filled-tertiary heroButton w-7/12 border border-black mt-4"
+				<a href="/" class="btn variant-filled-tertiary heroButton w-[30rem] border border-black mt-4"
 					>Play as a Guest</a
 				>
 			</div>
