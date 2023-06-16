@@ -43,7 +43,7 @@ export const actions = {
         else {
             return fail(422, {
                 height: "h-1",
-                error: "Incorrect username or password dumbass"
+                error: "Incorrect email or password"
             });
             // value = true;
             // const text = document.getElementById('incorrect');

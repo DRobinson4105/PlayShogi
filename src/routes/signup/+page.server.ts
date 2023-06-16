@@ -36,6 +36,6 @@ export const actions = {
             },
         });
 
-        throw redirect(303, `/signup`)
+        throw redirect(303, `/dashboard`)
     }
 } satisfies Actions;
