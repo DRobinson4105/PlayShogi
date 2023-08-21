@@ -1,20 +1,27 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+import DiscordProvider from "next-auth/providers/discord";
 import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { compare } from "bcrypt";
 import prismadb from "@/lib/prismadb";
 
+require('dotenv').config();
+
 export const authOptions: AuthOptions = {
 	providers: [
 		GithubProvider({
-			clientId: process.env.GITHUB_ID || "",
-			clientSecret: process.env.GITHUB_SECRET || "",
+			clientId: process.env.GITHUB_ID as string,
+			clientSecret: process.env.GITHUB_SECRET as string,
 		}),
 		GoogleProvider({
-			clientId: process.env.GOOGLE_CLIENT_ID || "",
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+			clientId: process.env.GOOGLE_CLIENT_ID as string,
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+		}),
+		DiscordProvider({
+			clientId: process.env.DISCORD_CLIENT_ID as string,
+			clientSecret: process.env.DISCORD_CLIENT_SECRET as string,
 		}),
 		Credentials({
 			id: "credentials",
