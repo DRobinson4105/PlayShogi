@@ -6,14 +6,6 @@ import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { compare } from "bcrypt";
 import prismadb from "@/lib/prismadb";
-import { createHash } from "crypto"
-
-require('dotenv').config();
-
-
-function hash(str: string) {
-  return createHash('sha256').update(str).digest('hex');
-}
 
 export const authOptions: AuthOptions = {
 	providers: [
@@ -58,7 +50,7 @@ export const authOptions: AuthOptions = {
 				}
 
 				const isCorrectPassword = await compare(
-					hash(credentials.password),
+					credentials.password,
 					user.hashedPassword
 				);
 

@@ -16,7 +16,7 @@ const Input: React.FC<InputProps> = ({ id, onChange, value, label, type }) => {
 			placeholder={label}
 			value={value}
 			onChange={onChange}
-			className="input ml-4 input-bordered w-4/5 max-w-xs"
+			className="input input-bordered w-full "
 		/>
 	);
 };
