@@ -5,28 +5,13 @@ import { NextPageContext } from "next";
 import { getSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
+import { FaDiscord, FaGithub } from "react-icons/fa";
 
 import logo from "/public/images/Logo.svg";
 import background from "../public/images/auth-background.jpeg";
 import Input from "@/components/Input";
 
-export async function getServerSideProps(context: NextPageContext) {
-	const session = await getSession(context);
 
-	if (session) {
-		return {
-			redirect: {
-				destination: "/",
-				permanent: false,
-			},
-		};
-	}
-
-	return {
-		props: {},
-	};
-}
 
 const auth = () => {
 	const router = useRouter();
@@ -160,6 +145,12 @@ const auth = () => {
 						className="w-16 h-10 bg-white rounded-md flex items-center justify-center cursor-pointer hover:opacity-80 transition"
 					>
 						<FaGithub size={32} style={{ color: "#000" }} />
+					</div>
+					<div
+						onClick={() => signIn("discord", { callbackUrl: "/dashboard" })}
+						className="w-16 h-10 bg-white rounded-md flex items-center justify-center cursor-pointer hover:opacity-80 transition"
+					>
+						<FaDiscord size={32} style={{ color: "#5865F2" }} />
 					</div>
 				</div>
 				<p className="text-neutral-500 mt-8 text-center">
