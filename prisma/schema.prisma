@@ -6,22 +6,25 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id     Int    @id @default(autoincrement())
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  image          String?   @default("https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-1.jpg")
+  email          String?   @unique
+  emailVerified  DateTime?
+  hashedPassword String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  sessions       Session[]
+  accounts       Account[]
 
-  // Login Info
-  email    String @unique
-  username String? @unique
-  password String
-
-  // Profile
-  avatarURL       String @default("https://wallpapers-clan.com/wp-content/uploads/2022/08/default-pfp-1.jpg")
-  friends         User[] @relation("friends")
-  friendsRelation User[] @relation("friends")
+  // Friends
+  friendshipsAsUser   Friendship[] @relation("UserFriendshipsAsUser")
+  friendshipsAsFriend Friendship[] @relation("UserFriendshipsAsFriend")
 
   // Stats
   rank   Int @default(0)
@@ -30,7 +33,49 @@ model User {
   draws  Int @default(0)
 }
 
-// docker compose up
-// npx prisma migrate dev
-// npx prisma generate
-// npx prisma studio dev
+model Friendship {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  user     User   @relation(name: "UserFriendshipsAsUser", fields: [userId], references: [id])
+  userId   String @map("_userId") @db.ObjectId
+  friend   User   @relation(name: "UserFriendshipsAsFriend", fields: [friendId], references: [id])
+  friendId String @map("_friendId") @db.ObjectId
+
+  @@unique([userId, friendId])
+}
+
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  sessionToken String   @unique
+  userId       String   @db.ObjectId
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
